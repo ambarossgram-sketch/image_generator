@@ -191,15 +191,15 @@
             e.preventDefault();
 
             if (!imageUpload.files[0]) {
-                statusMessage.textContent = 'Please upload an image first.';
+                statusMessage.textContent = 'Пожалуйста, сначала загрузите изображение.';
                 return;
             }
 
-            const prompt = promptInput.value || 'Generate a similar image with a different background';
+            const prompt = promptInput.value || 'Сгенерируйте похожее изображение с другим фоном';
             const file = imageUpload.files[0];
 
             generateBtn.disabled = true;
-            generateBtn.textContent = 'Generating...';
+            generateBtn.textContent = 'Генерирую...';
             statusMessage.innerHTML = `<div class="flex justify-center items-center"><div class="loader"></div></div>`;
             generatedImagesContainer.querySelectorAll('.image-box').forEach(el => el.classList.add('hidden'));
 
@@ -283,7 +283,7 @@
 
             } catch (error) {
                 console.error('Error:', error);
-                statusMessage.textContent = `Error: ${error.message}`;
+                statusMessage.textContent = `Ошибка: ${error.message}`;
                 generatedImages.forEach(img => img.src = '');
                 generatedImageContainers.forEach(el => el.classList.add('hidden'));
             } finally {

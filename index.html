@@ -157,7 +157,10 @@
         ];
 
         const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=`;
-        const API_KEY = "";
+        
+        // Вставьте сюда свой ключ API, полученный в Google AI Studio.
+        // Замените YOUR_API_KEY на ваш ключ.
+        const API_KEY = "AIzaSyB6axtk2NUTfUdJ_FhOqfBcEXBrSO1ywfk";
 
         // Helper function to convert a file to a Base64 string
         const fileToBase64 = (file) => {
@@ -192,6 +195,10 @@
 
             if (!imageUpload.files[0]) {
                 statusMessage.textContent = 'Пожалуйста, сначала загрузите изображение.';
+                return;
+            }
+            if (API_KEY === "YOUR_API_KEY" || API_KEY === "") {
+                statusMessage.textContent = 'Ошибка: Пожалуйста, вставьте ваш ключ API в код.';
                 return;
             }
 
@@ -234,7 +241,7 @@
                         };
 
                         try {
-                            const response = await fetch(API_URL, {
+                            const response = await fetch(`${API_URL}?key=${API_KEY}`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(payload)

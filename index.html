@@ -160,7 +160,8 @@
         
         // Вставьте сюда свой ключ API, полученный в Google AI Studio.
         // Замените YOUR_API_KEY на ваш ключ.
-        const API_KEY = "AIzaSyC-OOKttJ2p_-r_UKqghQnT_egmdnv8UDg";
+        // ПОЖАЛУЙСТА, НЕ ПЕРЕДАВАЙТЕ ВАШ КЛЮЧ В ЧАТЕ!
+        const API_KEY = "AIzaSyDpzCZrSxmHlLz4S4yzdoFwfHp5t9eGIwM";
 
         // Helper function to convert a file to a Base64 string
         const fileToBase64 = (file) => {
@@ -197,7 +198,7 @@
                 statusMessage.textContent = 'Пожалуйста, сначала загрузите изображение.';
                 return;
             }
-            if (API_KEY === "YOUR_API_KEY" || API_KEY === "") {
+            if (API_KEY === "" || API_KEY === "YOUR_API_KEY") {
                 statusMessage.textContent = 'Ошибка: Пожалуйста, вставьте ваш ключ API в код.';
                 return;
             }

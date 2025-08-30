@@ -156,13 +156,11 @@
             document.getElementById('generatedImage4')
         ];
 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent`;
+        // Вставьте ваш ключ API здесь.
+        // ПОЖАЛУЙСТА, не делитесь этим ключом ни с кем.
+        const API_KEY = "AIzaSyCMp8PDRmeKRQGESa-DzyKmhaS10802t0Y";
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=${API_KEY}`;
         
-        // Ключ API больше не требуется.
-        // Canvas передаёт его автоматически.
-        // Эта строка теперь не используется.
-        // const API_KEY = "";
-
         // Helper function to convert a file to a Base64 string
         const fileToBase64 = (file) => {
             return new Promise((resolve, reject) => {

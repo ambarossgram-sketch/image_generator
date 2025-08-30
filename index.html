@@ -156,12 +156,10 @@
             document.getElementById('generatedImage4')
         ];
 
-        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent?key=`;
+        const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-image-preview:generateContent`;
         
-        // Вставьте сюда свой ключ API, полученный в Google AI Studio.
-        // Замените YOUR_API_KEY на ваш ключ.
-        // ПОЖАЛУЙСТА, НЕ ПЕРЕДАВАЙТЕ ВАШ КЛЮЧ В ЧАТЕ!
-        const API_KEY = "AIzaSyCX-YLBWFFwd-W3Rft-rP5zNGXpgBAuXME";
+        // This time, we don't need the API key here. The Canvas environment handles it securely.
+        const API_KEY = ""; // This is now just a placeholder.
 
         // Helper function to convert a file to a Base64 string
         const fileToBase64 = (file) => {
@@ -196,10 +194,6 @@
 
             if (!imageUpload.files[0]) {
                 statusMessage.textContent = 'Пожалуйста, сначала загрузите изображение.';
-                return;
-            }
-            if (API_KEY === "" || API_KEY === "YOUR_API_KEY") {
-                statusMessage.textContent = 'Ошибка: Пожалуйста, вставьте ваш ключ API в код.';
                 return;
             }
 
@@ -242,7 +236,7 @@
                         };
 
                         try {
-                            const response = await fetch(`${API_URL}?key=${API_KEY}`, {
+                            const response = await fetch(`${API_URL}`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify(payload)
@@ -255,10 +249,6 @@
                                     return makeApiCall(retries + 1);
                                 }
                                 const error = await response.json();
-                                // More specific error handling for the API key error
-                                if (response.status === 400 && error.error?.message.includes("API key not valid")) {
-                                    throw new Error("Ваш ключ API недействителен. Пожалуйста, получите новый ключ в Google AI Studio.");
-                                }
                                 throw new Error(error.error.message || `API failure with status: ${response.status}`);
                             }
 

@@ -160,7 +160,7 @@
         
         // Вставьте сюда свой ключ API, полученный в Google AI Studio.
         // Замените YOUR_API_KEY на ваш ключ.
-        const API_KEY = "AIzaSyB6axtk2NUTfUdJ_FhOqfBcEXBrSO1ywfk";
+        const API_KEY = "AIzaSyCMp8PDRmeKRQGESa-DzyKmhaS10802t0Y";
 
         // Helper function to convert a file to a Base64 string
         const fileToBase64 = (file) => {
@@ -254,6 +254,10 @@
                                     return makeApiCall(retries + 1);
                                 }
                                 const error = await response.json();
+                                // More specific error handling for the API key error
+                                if (response.status === 400 && error.error?.message.includes("API key not valid")) {
+                                    throw new Error("Ваш ключ API недействителен. Пожалуйста, получите новый ключ в Google AI Studio.");
+                                }
                                 throw new Error(error.error.message || `API failure with status: ${response.status}`);
                             }
 
